@@ -1,0 +1,61 @@
+    // const img = new Image();
+    // img.src = `${tshirt[item].imageUrl}`;
+    // const imagetest = document.getElementById('img-container');
+    // imagetest.appendChild(img);
+    // document.getElementById('img-container').appendChild(img);
+
+    DANS AXIOS
+    // console.log(response.status);
+    // console.log(response.statusText);
+    // console.log(response.headers);
+    // console.log(response.config);
+
+    //    let text = '';
+    // for (const key in teeshirt) {
+    //  text += teeshirt[key].category + ' ';
+    //}
+    //console.log(text);
+    //});
+
+
+
+        let text = '';
+    for (const key in teeshirt) {
+      text += `${teeshirt[key].category} `;
+    }
+    console.log(text);
+
+// FUNCTION SELECT 1: gender
+
+// const gender = document.getElementById('gender');
+
+// gender.addEventListener('change', () => {
+//   let genre = '';
+//   if (gender.options[gender.selectedIndex].innerHTML === 'female') {
+//     femaletest();
+//     genre = 'female';
+//   }
+//   if (gender.options[gender.selectedIndex].innerHTML === 'male') {
+//     maletest();
+//     genre = 'male';
+//   }
+//   document.getElementById('choixgenre').innerHTML = genre;
+// });
+
+
+    // FUNCTION SELECT 3: category
+
+// const category = document.getElementById('category');
+
+// category.addEventListener('change', () => {
+//   let cat = '';
+//   if (category.options[category.selectedIndex].innerHTML === 'meme') {
+//     categorytest();
+//     //cat = 'meme doit afficher 16 tshirts';
+//   }
+//   if (category.options[category.selectedIndex].innerHTML === 'geek') {
+//     categorytest();
+//     //cat = 'geek doit afficher 9 tshirts';
+//   }
+//   document.getElementById('choixcategory').innerHTML = cat;
+// });

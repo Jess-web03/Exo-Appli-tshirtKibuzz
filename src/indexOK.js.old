@@ -1,0 +1,183 @@
+import $ from 'jquery';
+
+const axios = require('axios').default;
+
+$.get('src\\data\\tshirt.json').then((reponse) => {
+  const tshirt = reponse['t-shirts'];
+  // console.log(tshirt);
+  let tshirtItem = '';
+  for (const item in tshirt) {
+    tshirtItem = `${tshirtItem} <br /> 
+                                    
+                                    <img src= ${tshirt[item].imageUrl} />
+                                    <br />
+                              
+                                   <button class="btn btn-primary">BUY ME</button>
+                                   <br />
+                                   ${tshirt[item].gender} 
+                                    price: ${tshirt[item].price}€ 
+                                   ${tshirt[item].size} 
+                                   <br />`;
+
+
+    document.getElementById('tshItem').innerHTML = tshirtItem;
+    // console.log(`${tshirt[item].gender} ${tshirt[item].price}`);
+  }
+  // console.log(reponse['t-shirts'][1]);
+  // console.log(reponse['t-shirts'][1].gender);
+});
+
+axios.get('src\\data\\tshirt.json')
+  .then((response) => {
+    console.log(response.data);
+    console.log(response.data['t-shirts']);
+    const teeshirt = response.data['t-shirts'];
+
+    for (const key in teeshirt) {
+      if (teeshirt[key].size === 'XS') {
+        console.log('XS test');
+      }
+      if (teeshirt[key].size === 'S') {
+        console.log('S test');
+      }
+      if (teeshirt[key].size === 'M') {
+        console.log('M test');
+      }
+      if (teeshirt[key].size === 'L') {
+        console.log('L test');
+      }
+      if (teeshirt[key].size === 'XL') {
+        console.log('XL test');
+      }
+    }
+    // FUNCTION CATEGORY
+    function categorytest() {
+      let categorietest = '';
+      for (const key in teeshirt) {
+        if (teeshirt[key].category === 'meme') {
+        // categorietest = '16 meme test';
+          categorietest = `${categorietest}
+                                      <img src= ${teeshirt[key].imageUrl} />
+                                      <br />
+                                      ${teeshirt[key].gender} 
+                                      ${teeshirt[key].size} 
+                                         ${teeshirt[key].price}€ <br />`;
+        }
+      }
+      document.getElementById('tshItem').innerHTML = categorietest;
+    }
+
+    function categorytestgeek() {
+      let categorietest = '';
+      for (const key in teeshirt) {
+        if (teeshirt[key].category === 'geek') {
+          // categorietest = '9 black geek test';
+          categorietest = `${categorietest}
+                                      <img src= ${teeshirt[key].imageUrl} />
+                                      <br />
+                                      ${teeshirt[key].gender} 
+                                      ${teeshirt[key].size} 
+                                       ${teeshirt[key].price}€ <br />`;
+        }
+      }
+      document.getElementById('tshItem').innerHTML = categorietest;
+    }
+
+
+    const category = document.getElementById('category');
+
+    category.addEventListener('change', () => {
+      let cat = '';
+      if (category.options[category.selectedIndex].innerHTML === 'meme') {
+        categorytest();
+        cat = 'Category m 16 tshirts';
+      }
+      if (category.options[category.selectedIndex].innerHTML === 'geek') {
+        categorytestgeek();
+        cat = 'Category g 9 tshirts';
+      }
+      document.getElementById('choixcategory').innerHTML = cat;
+    });
+
+    // FUNCTION GENDER
+    function maletest() {
+      let maleTest = '';
+      for (const key in teeshirt) {
+        if (teeshirt[key].gender === 'M') {
+          maleTest = `${maleTest}
+                                      <img src= ${teeshirt[key].imageUrl} />
+                                      <br />
+                                      ${teeshirt[key].gender} 
+                                      ${teeshirt[key].size} 
+                                       ${teeshirt[key].price}€ <br />`;
+        }
+      }
+      document.getElementById('tshItem').innerHTML = maleTest;
+    }
+
+    function femaletest() {
+      let femaleTest = '';
+      for (const key in teeshirt) {
+        if (teeshirt[key].gender === 'F') {
+          femaleTest = `${femaleTest}
+                                      <img src= ${teeshirt[key].imageUrl} />
+                                      <br />
+                                      ${teeshirt[key].gender} 
+                                      ${teeshirt[key].size} 
+                                       ${teeshirt[key].price}€ <br />`;
+        }
+      }
+      document.getElementById('tshItem').innerHTML = femaleTest;
+    }
+
+    const gender = document.getElementById('gender');
+
+    gender.addEventListener('change', () => {
+      // let genre = '';
+      if (gender.options[gender.selectedIndex].innerHTML === 'female') {
+        femaletest();
+        // genre = 'female';
+      }
+      if (gender.options[gender.selectedIndex].innerHTML === 'male') {
+        maletest();
+        // genre = 'male';
+      }
+      // document.getElementById('choixgenre').innerHTML = genre;
+    });
+
+    const textG = '';
+    for (const key in teeshirt) {
+      if (teeshirt[key].gender === 'M') {
+        console.log('male test');
+      }
+      if (teeshirt[key].gender === 'F') {
+        console.log('female test');
+      }
+      // textG += teeshirt[key].gender + ' ';
+    }
+    console.log(textG);
+  });
+
+// FUNCTION SELECT 2: size
+
+const size = document.getElementById('size');
+
+size.addEventListener('change', () => {
+  let taille = '';
+  if (size.options[size.selectedIndex].innerHTML === 'XS') {
+    taille = 'xs';
+  }
+  if (size.options[size.selectedIndex].innerHTML === 'S') {
+    taille = 's';
+  }
+  if (size.options[size.selectedIndex].innerHTML === 'M') {
+    taille = 'm';
+  }
+  if (size.options[size.selectedIndex].innerHTML === 'L') {
+    taille = 'l';
+  }
+  if (size.options[size.selectedIndex].innerHTML === 'XL') {
+    taille = 'xl';
+  }
+  document.getElementById('choixsize').innerHTML = taille;
+});

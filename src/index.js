@@ -63,6 +63,35 @@ axios.get('src\\data\\tshirt.json')
     }
     document.getElementById('tshItem').innerHTML = tshirtItem;
 
+    // rajout d'un bouton pour classer du plus petit au plus grand prix
+    // fonction pour bouton
+    function sortByPrice(obj) {
+      let tshPrice = '';
+      for (const key of teeshirt) {
+        console.log(key.price);
+        tshPrice = `${tshPrice}
+          <img src= ${key.imageUrl} /> <br />
+                    
+                    ${key.price}€ 
+                    ${key.gender}
+                    ${key.size}
+                    <br />`;
+        obj.sort((a, b) => (a.price > b.price ? 1 : -1));
+      }
+      document.getElementById('tshItem').innerHTML = tshPrice;
+    }
+    /*
+    const bouton = document.createElement('button');
+    bouton.innerHTML = 'Prix (du + bas au + élevé)';
+    bouton.classList.add('style-btn');
+    document.body.appendChild(bouton);
+    bouton.addEventListener('click', () => {
+      sortByPrice(teeshirt);
+    });
+    */
+    document.getElementById('priceOrder').addEventListener('click', () => {
+      sortByPrice(teeshirt);
+    });
     // choix par catégorie
     // FUNCTION CATEGORY
     let catcat = '';
